@@ -28,13 +28,21 @@ console.log(andSelect(['ants', 'APPLES', 'ART', 'BACON', 'arm'], isUpperCase,  s
 
 *******************************************************************************/
 
-let andSelect = function() {
+debugger
 
+let andSelect = function(arr, cb1, cb2) {
+    let res = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        let el = arr[i];
+
+        if(cb1(el) === true && cb2(el) === true) {
+            res.push(el)
+        }
+    }
+
+    return res;
 };
-
-
-
-
 
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
