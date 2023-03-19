@@ -36,8 +36,49 @@ let result6 = one(['apple', 'dog', 'food', 'cat'], function(el, idx) {
 });
 console.log(result6);   // true
 *******************************************************************************/
+debugger
+let one = function(arr, cb) {
+    // results array
+    let res = [];
 
-let one = function() {
+    // loop through original arr
+    for (let i = 0; i < arr.length; i++) {
+        let el = arr[i];
+
+        // if current element is in results array, we break the loop and return false;
+        if(res.includes(el)) {
+            return false;
+        }
+
+        // we loop through results arr
+        for (let j = 0; j < res.length; j++) {
+            let el1 = res[j];
+
+            // we invoke callback func with current ele of the original arr and compare with every element in the results arr
+            // if both element returns true, we break the loop and return false
+            if (cb(el, i) === true) {
+                if (cb(el1, j) === true) {
+                    return false;
+                }
+            }
+        }
+        // we add current element to the results array and continue with the loop
+        res.push(el);
+    }
+
+    // after adding last element to results arr we loop through results arr
+    for(let k = 0; k < res.length; k++) {
+        let el = res[k];
+
+        //if at lest one element returns true we break loop and return true
+        if(cb(el, k) ===  true) {
+            return true;
+        }
+
+    }
+
+    // else we return false if no element passed the condition of the callback func
+    return false;
 
 };
 

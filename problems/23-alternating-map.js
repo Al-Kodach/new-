@@ -36,8 +36,22 @@ console.log(alternatingMap(['hEy', 'EVERYone', 'whats', 'uP??'], yell, whisper))
 *******************************************************************************/
 
 
-let alternatingMap = function() {
+let alternatingMap = function(arr, cb1, cb2) {
+    let res = [];
 
+    for(let i = 0; i < arr.length; i++) {
+        let el = arr[i];
+
+        // if current index is an even number we pass it to callback 1 otherwise callback 2
+        // push to result arr;
+        if(i % 2 === 0) {
+            res.push(cb1(el));
+        } else {
+            res.push(cb2(el));
+        }
+    }
+
+    return res;
 };
 
 

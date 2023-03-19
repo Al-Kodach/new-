@@ -24,12 +24,26 @@ let removeVowels = function(word) {
 let result2 = sentenceMapper("this is pretty cool right", removeVowels);
 console.log(result2); // 'ths s prtty cl rght'
 *******************************************************************************/
+debugger
+let sentenceMapper = function(sentence, callback) {
+    // convert string to arr
+    let words = sentence.split(' ');
 
-let sentenceMapper = function() {
+    // loop through words arr
+    for (let i = 0; i < words.length; i++) {
+        let word = words[i];
 
+        // replace word in words with result from calling callbach func with word
+        words[i] = callback(word);
+    }
+
+    return words.join(' ');
 };
 
-
+let result1 = sentenceMapper("what is the answer?", function(word) {
+    return word.toUpperCase() + "!";
+});
+console.log(result1); // 'WHAT! IS! THE! ANSWER?!'
 
 
 

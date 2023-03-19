@@ -28,8 +28,19 @@ let result4 = none([4, -5, 7, -1], function(n) {
 console.log(result4);   // false
 *******************************************************************************/
 
-let none = function() {
+let none = function(arr, cb) {
+    // loop through arr
+    for (let i = 0; i < arr.length; i++) {
+        let el = arr[i];
 
+         // check if current element returns true from the callback func
+        if(cb(el) === true) {
+            // break loop and return false since an ele is found
+            return false;
+        }
+    }
+
+    return true;
 };
 
 

@@ -33,13 +33,20 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 - Explain, but don't code, how you would refactor this problem to take in an
   optional initial accumulator
 *******************************************************************************/
+debugger
+let mySimpleReduce = function(arr, cb) {
+    let accum = arr[0];
 
-let mySimpleReduce = function() {
+    // iterate arr from index 1 since accumulator is set to index 0
+    for (let i = 1; i < arr.length; i++) {
+        let el = arr[i];
 
+        // resign accumulator from the result from passing accumulator and current element to the callback function
+        accum = cb(accum , el);
+    }
+
+    return accum;
 };
-
-
-
 
 
 

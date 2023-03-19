@@ -22,8 +22,18 @@ let result3 = firstIndex(['canine', 'feline', 'tree'], function (s) {
 console.log(result3); // -1
 *******************************************************************************/
 
-let firstIndex = function() {
+let firstIndex = function(arr, cb) {
+    for (let i = 0; i < arr.length; i++) {
+        let el = arr[i];
 
+        // check if current element returns true from invoking callback fn with it;
+        if(cb(el) === true) {
+            // we break the loop and return the index of the current element
+            return arr.indexOf(el);
+        }
+    }
+    // we return -1 if no element passed the callback func condition;
+    return -1;
 };
 
 
